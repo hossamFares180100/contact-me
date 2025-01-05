@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../screens/start_screen.dart';
+
 class SocialMediaIcon extends StatelessWidget {
   final String path,uri;
   const SocialMediaIcon(this.path,this.uri, {super.key}); 
@@ -16,7 +18,10 @@ class SocialMediaIcon extends StatelessWidget {
                     ),
       onTap: (){
         //flutter pub add url_launcher
-        launchUrl(Uri.parse(uri));
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => StartScreen(uri))
+        );
+        StartScreen(uri);
       },
       ),
     

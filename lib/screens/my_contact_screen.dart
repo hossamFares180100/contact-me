@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/social_grid.dart';
-import '../widgets/social_media_icon.dart';
 
 class MyContacts extends StatelessWidget {
   final Map<String,String> social={
