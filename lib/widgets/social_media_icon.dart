@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../screens/start_screen.dart';
-
 class SocialMediaIcon extends StatelessWidget {
   final String path,uri;
   const SocialMediaIcon(this.path,this.uri, {super.key}); 
@@ -18,10 +16,21 @@ class SocialMediaIcon extends StatelessWidget {
                     ),
       onTap: (){
         //flutter pub add url_launcher
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => StartScreen(uri))
+        showModalBottomSheet(context: context, builder: (context)
+        {
+          return  ElevatedButton(
+          style: const ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.deepOrange),
+          ),
+          onPressed: () {
+            launchUrl(Uri.parse(uri));
+          },
+          child:  Text('Start ${path.split(".")[0]}'),
         );
-        StartScreen(uri);
+        },
+        backgroundColor: const Color.fromARGB(255, 3, 7, 30),
+        );
+      
       },
       ),
     

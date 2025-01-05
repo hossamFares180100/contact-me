@@ -37,13 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   url_launcher: ^6.3.1
   flutter_native_splash: ^2.4.1
-  flutter_launcher_icons: ^0.14.2
   rename: ^3.0.2
 
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/splash.png"
+
 
 flutter_native_splash:
   android: true
@@ -54,6 +50,14 @@ flutter_native_splash:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.2
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/splash.png"
+  adaptive_icon_background: "#FFFFFF"  
+  adaptive_icon_foreground: "assets/splash.png" 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
