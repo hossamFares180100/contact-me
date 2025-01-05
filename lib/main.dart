@@ -98,9 +98,15 @@ second for generate apk for each device type
   - git config --global user.email "hossamfares180100@gmail.com"
   - git init
   - git add .       // to add all files with green color to not add one by one
-  - git commit -m "first commit"
-  - git branch -M main
-  - git remote add origin
-  - git push -u origin main
+  - git commit -m "first commit"  // to commit all files with message m "first commit" like tasks finished
+  - git branch -M main // not neccessry now
+  - git remote add origin https://github.com/hossamFares180100/contact-me.git // to add all to remote repository
+  - git push -u origin master // to push all files to github
+  // master is the main branch name in github but in our project can change to main by this command git branch -M main
+ */
 
+/* to make new branch in github and push to it to keep main branch clean and make updates in new branch
+- git branch // to show all branches 
+- git branch new_branch // to create new branch named new_branch
+- git checkout new_branch // to switch to new branch
  */
