@@ -1,4 +1,6 @@
+import 'package:contact_me/my_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/social_media_icon.dart';
@@ -11,6 +13,7 @@ class MyContacts extends StatefulWidget {
 }
 
 class _MyContactsState extends State<MyContacts> {
+
   final Map<String, String> social = {
     "whatsapp.png": "https://wa.me/+201114652236",
     "facebook.png":
@@ -28,46 +31,40 @@ class _MyContactsState extends State<MyContacts> {
     "snapchat.png":
         "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Fhossamfares20%3Fshare_id%3Dyu_4b0em-FM%26locale%3Den-EG%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2nn-HiFDwEcQlZWIij5Tl_aRzx6oW1LFy2lTw32ZmDzU7m24HwZjfUqqI_aem_8fMEq4j0x_A6okHhRbyNbA&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg"
   };
-  String? platform, myUrl;
 
-  
-  void changeMyState(String platform,String myUrl){
-    this.platform = platform;
-    this.myUrl = myUrl;
-    setState(() {
-      
-    });
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              icon: platform == null
-                  ? const Icon(Icons.phone, size: 25)
-                  : Material(
-                    borderRadius: BorderRadius.circular(50),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    elevation: 4,
-                      color: Colors.transparent,
-                      child: Image(
-                        image: AssetImage(platform!),
-                        fit: BoxFit.cover,
-                      )),
-              onPressed: () {
-                //flutter pub add url_launcher
-                if (myUrl == null) {
-                  launchUrl(Uri.parse("tel:+201114652236"));
-                } else {
-                  launchUrl(Uri.parse(myUrl!));
-                }
-              },
+          Consumer<MyProvider>(
+            builder: (context, value, child) => Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                icon: value.myPlatform == null
+                    ? const Icon(Icons.phone, size: 25)
+                    : Material(
+                      borderRadius: BorderRadius.circular(50),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      elevation: 4,
+                        color: Colors.transparent,
+                        child: Image(
+                          image: AssetImage(value.myPlatform!),
+                          fit: BoxFit.cover,
+                        )),
+                onPressed: () {
+                  //flutter pub add url_launcher
+                  if (value.myUrl == null) {
+                    launchUrl(Uri.parse("tel:+201114652236"));
+                  } else {
+                    launchUrl(Uri.parse(value.myUrl!));
+                  }
+                },
+              ),
             ),
-          ),
+           ),
         ],
       ),
       backgroundColor: const Color.fromARGB(255, 3, 7, 30),
@@ -125,7 +122,7 @@ class _MyContactsState extends State<MyContacts> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),
                 itemBuilder: (context, index) {
-                  return SocialMediaIcon(social.keys.toList()[index], social.values.toList()[index],changeMyState);
+                  return SocialMediaIcon(social.keys.toList()[index], social.values.toList()[index]);
                   },
                 shrinkWrap: true,
                 //physics: BouncingScrollPhysics(), // make grid scrollable

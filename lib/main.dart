@@ -1,4 +1,6 @@
+import 'package:contact_me/my_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 //import 'package:flutter/services.dart';
 import 'screens/my_contact_screen.dart';
 
@@ -19,11 +21,14 @@ class MyApp extends StatelessWidget {
         systemNavigationBarIconBrightness: Brightness.dark, //navigation bar icons' color
     ));
     */
-    return  MaterialApp(
-      theme: ThemeData(useMaterial3: false),
-      debugShowCheckedModeBanner: false,
-      home: MyContacts(),
-
+    return  ChangeNotifierProvider( // notify ui when data changes
+    create: (context) => MyProvider(),// the store of data to notify ui
+      child: MaterialApp(
+        theme: ThemeData(useMaterial3: false),
+        debugShowCheckedModeBanner: false,
+        home: MyContacts(),
+      
+      ),
     );
   }
 }
