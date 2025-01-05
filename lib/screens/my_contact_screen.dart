@@ -3,26 +3,64 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/social_media_icon.dart';
 
-class MyContacts extends StatelessWidget {
-  final Map<String,String> social={
-    "whatsapp.png":"https://wa.me/+201114652236",
-    "facebook.png":"https://www.facebook.com/profile.php?id=100008427044648&mibextid=ZbWKwL",
-    "gmail.png":"mailto:hossamfares180100@gmail.com?subject=emails&body=Dear%20Eng Hossam,%0A",
-    "github.png":"https://github.com/hossamFares180100",
-    "linkedin.png":"https://www.linkedin.com/in/hossam-fares-452a802a6/",
-    "instagram.png":"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fhossam_f_alsayed%2Fprofilecard%2F%3Figsh%3DemNudndhampoN2M0%26fbclid%3DIwZXh0bgNhZW0CMTAAAR0J1Pwb5kc7NQPlODr2dt-BLSt-YEvdEmGHR-Aj9tkMFEArZO940afRxf4_aem_kFirOzJGEuyyDhTu4QQc3A&h=AT1iVOzux-dhGZXAl1dLV-PuTHi_GTLSJNUvwl473Y2n1zYSoNMhd749jt9nF27Wd94ybxvr0pmxjIfQkwR-dCZ8264MMvlep-4QQnQu74Nmp2MWmqljHQeCN4HVfE4V8vreNrh0b3wHCK4",
-    "tiktok.png":"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.tiktok.com%2F%40hossamfares180100%3F_t%3D8sfEukurrsI%26_r%3D1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2xkqF4tGNB5p9rG8gvAdMNVuxyQXjwRVJ4KRWmErqhIjnwf-txuayfkOE_aem_m60o_BqDcjvRB2di4RjyvA&h=AT0sFelNYkVK9voRNo7iJ0nRcQAEOfsthL5JFJWeHNv0kCJOuMccAqToprfpMTkfeMUlZiHAfxShnNQGk72sxR_UlDbDOJELuxlMyh0uvaTgclCWtFsgRriuCSXv5jRntsm57A",
-    "telegram.png":"https://l.facebook.com/l.php?u=http%3A%2F%2Ft.me%2FHossamFares180%3Ffbclid%3DIwZXh0bgNhZW0CMTAAAR0y0-4q02f8iM_tZt3uH1PB-74u-Du-Jk2qtoDu0U1M89FT9ishaeOqm_o_aem_oTsU1d8crmFkSDfB95nBHg&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg",
-    "snapchat.png":"https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Fhossamfares20%3Fshare_id%3Dyu_4b0em-FM%26locale%3Den-EG%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2nn-HiFDwEcQlZWIij5Tl_aRzx6oW1LFy2lTw32ZmDzU7m24HwZjfUqqI_aem_8fMEq4j0x_A6okHhRbyNbA&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg"
-  };
-
-
-
+class MyContacts extends StatefulWidget {
   MyContacts({super.key});
 
   @override
+  State<MyContacts> createState() => _MyContactsState();
+}
+
+class _MyContactsState extends State<MyContacts> {
+  final Map<String, String> social = {
+    "whatsapp.png": "https://wa.me/+201114652236",
+    "facebook.png":
+        "https://www.facebook.com/profile.php?id=100008427044648&mibextid=ZbWKwL",
+    "gmail.png":
+        "mailto:hossamfares180100@gmail.com?subject=emails&body=Dear%20Eng Hossam,%0A",
+    "github.png": "https://github.com/hossamFares180100",
+    "linkedin.png": "https://www.linkedin.com/in/hossam-fares-452a802a6/",
+    "instagram.png":
+        "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fhossam_f_alsayed%2Fprofilecard%2F%3Figsh%3DemNudndhampoN2M0%26fbclid%3DIwZXh0bgNhZW0CMTAAAR0J1Pwb5kc7NQPlODr2dt-BLSt-YEvdEmGHR-Aj9tkMFEArZO940afRxf4_aem_kFirOzJGEuyyDhTu4QQc3A&h=AT1iVOzux-dhGZXAl1dLV-PuTHi_GTLSJNUvwl473Y2n1zYSoNMhd749jt9nF27Wd94ybxvr0pmxjIfQkwR-dCZ8264MMvlep-4QQnQu74Nmp2MWmqljHQeCN4HVfE4V8vreNrh0b3wHCK4",
+    "tiktok.png":
+        "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.tiktok.com%2F%40hossamfares180100%3F_t%3D8sfEukurrsI%26_r%3D1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2xkqF4tGNB5p9rG8gvAdMNVuxyQXjwRVJ4KRWmErqhIjnwf-txuayfkOE_aem_m60o_BqDcjvRB2di4RjyvA&h=AT0sFelNYkVK9voRNo7iJ0nRcQAEOfsthL5JFJWeHNv0kCJOuMccAqToprfpMTkfeMUlZiHAfxShnNQGk72sxR_UlDbDOJELuxlMyh0uvaTgclCWtFsgRriuCSXv5jRntsm57A",
+    "telegram.png":
+        "https://l.facebook.com/l.php?u=http%3A%2F%2Ft.me%2FHossamFares180%3Ffbclid%3DIwZXh0bgNhZW0CMTAAAR0y0-4q02f8iM_tZt3uH1PB-74u-Du-Jk2qtoDu0U1M89FT9ishaeOqm_o_aem_oTsU1d8crmFkSDfB95nBHg&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg",
+    "snapchat.png":
+        "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Fhossamfares20%3Fshare_id%3Dyu_4b0em-FM%26locale%3Den-EG%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2nn-HiFDwEcQlZWIij5Tl_aRzx6oW1LFy2lTw32ZmDzU7m24HwZjfUqqI_aem_8fMEq4j0x_A6okHhRbyNbA&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg"
+  };
+  String? platform, myUrl;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon: platform == null
+                  ? const Icon(Icons.phone, size: 25)
+                  : Material(
+                    borderRadius: BorderRadius.circular(50),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    elevation: 4,
+                      color: Colors.transparent,
+                      child: Image(
+                        image: AssetImage(platform!),
+                        fit: BoxFit.cover,
+                      )),
+              onPressed: () {
+                //flutter pub add url_launcher
+                if (myUrl == null) {
+                  launchUrl(Uri.parse("tel:+201114652236"));
+                } else {
+                  launchUrl(Uri.parse(myUrl!));
+                }
+              },
+            ),
+          ),
+        ],
+      ),
       backgroundColor: const Color.fromARGB(255, 3, 7, 30),
       body: SizedBox(
         width: double.infinity,
@@ -75,19 +113,36 @@ class MyContacts extends StatelessWidget {
                 height: 20,
               ),
               GridView.builder(
-                
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context,index){
-                    return SocialMediaIcon(social.keys.toList()[index],social.values.toList()[index]);
-                  },
-                  shrinkWrap: true, 
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: InkWell(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        backgroundImage:
+                            AssetImage("assets/${social.keys.toList()[index]}"),
+                        radius: 20,
+                      ),
+                      onTap: () {
+                        setState(() {
+                          platform = "assets/${social.keys.toList()[index]}";
+                          myUrl = social.values.toList()[index];
+                        });
+                        //flutter pub add url_launcher
+                        launchUrl(Uri.parse(social.values.toList()[index]));
+                      },
+                    ),
+                  );
+                },
+                shrinkWrap: true,
                 //physics: BouncingScrollPhysics(), // make grid scrollable
-                physics: const NeverScrollableScrollPhysics(), // make grid never scroll
+                physics:
+                    const NeverScrollableScrollPhysics(), // make grid never scroll
                 padding: const EdgeInsets.all(20),
                 itemCount: social.length,
-                  ),
-          
+              ),
             ],
           ),
         ),
