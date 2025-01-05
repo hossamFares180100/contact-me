@@ -28,7 +28,12 @@ class _MyContactsState extends State<MyContacts> {
     "snapchat.png":
         "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Fhossamfares20%3Fshare_id%3Dyu_4b0em-FM%26locale%3Den-EG%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2nn-HiFDwEcQlZWIij5Tl_aRzx6oW1LFy2lTw32ZmDzU7m24HwZjfUqqI_aem_8fMEq4j0x_A6okHhRbyNbA&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg"
   };
-  String? platform, myUrl;
+  
+  void changeMyState(){
+    setState(() {
+      
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +75,7 @@ class _MyContactsState extends State<MyContacts> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 100,
+                height: 10,
               ),
               const CircleAvatar(
                 backgroundImage: AssetImage("assets/profile2.jpg"),
@@ -116,26 +121,8 @@ class _MyContactsState extends State<MyContacts> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: InkWell(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        backgroundImage:
-                            AssetImage("assets/${social.keys.toList()[index]}"),
-                        radius: 20,
-                      ),
-                      onTap: () {
-                        setState(() {
-                          platform = "assets/${social.keys.toList()[index]}";
-                          myUrl = social.values.toList()[index];
-                        });
-                        //flutter pub add url_launcher
-                        launchUrl(Uri.parse(social.values.toList()[index]));
-                      },
-                    ),
-                  );
-                },
+                  return SocialMediaIcon(social.keys.toList()[index], social.values.toList()[index],changeMyState);
+                  },
                 shrinkWrap: true,
                 //physics: BouncingScrollPhysics(), // make grid scrollable
                 physics:

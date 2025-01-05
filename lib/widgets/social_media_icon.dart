@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialMediaIcon extends StatelessWidget {
-  final String path,uri;
-  const SocialMediaIcon(this.path,this.uri, {super.key}); 
+  final String path, uri;
+  
+  Function changeMyState;
+
+  SocialMediaIcon(this.path, this.uri,this.changeMyState, {super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,15 +15,28 @@ class SocialMediaIcon extends StatelessWidget {
       child: InkWell(
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
-                      backgroundImage: AssetImage("assets/$path"),
-                      radius: 40,
-                    ),
-      onTap: (){
-        //flutter pub add url_launcher
-        launchUrl(Uri.parse(uri));
-      },
+          backgroundImage: AssetImage("assets/$path"),
+          radius: 40,
+        ),
+        onDoubleTap: () {
+        platform = "assets/$path";
+        myUrl = uri;
+         changeMyState();
+        },
+        onTap: () {
+          platform = "assets/$path";
+        myUrl = uri;
+         changeMyState();
+          //flutter pub add url_launcher
+          launchUrl(Uri.parse(uri));
+        },
       ),
-    
     );
   }
 }
+
+String? platform, myUrl;
+
+
+
+
