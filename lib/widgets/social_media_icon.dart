@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 class SocialMediaIcon extends StatelessWidget {
   final String path, uri;
   
-  Function changeMyState;
+  Function(String platform,String myUrl) changeMyState;
 
   SocialMediaIcon(this.path, this.uri,this.changeMyState, {super.key});
 
@@ -19,14 +19,10 @@ class SocialMediaIcon extends StatelessWidget {
           radius: 40,
         ),
         onDoubleTap: () {
-        platform = "assets/$path";
-        myUrl = uri;
-         changeMyState();
+         changeMyState("assets/$path",uri);
         },
         onTap: () {
-          platform = "assets/$path";
-        myUrl = uri;
-         changeMyState();
+         changeMyState("assets/$path",uri);
           //flutter pub add url_launcher
           launchUrl(Uri.parse(uri));
         },
@@ -35,7 +31,6 @@ class SocialMediaIcon extends StatelessWidget {
   }
 }
 
-String? platform, myUrl;
 
 
 

@@ -28,8 +28,12 @@ class _MyContactsState extends State<MyContacts> {
     "snapchat.png":
         "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.snapchat.com%2Fadd%2Fhossamfares20%3Fshare_id%3Dyu_4b0em-FM%26locale%3Den-EG%26fbclid%3DIwZXh0bgNhZW0CMTAAAR2nn-HiFDwEcQlZWIij5Tl_aRzx6oW1LFy2lTw32ZmDzU7m24HwZjfUqqI_aem_8fMEq4j0x_A6okHhRbyNbA&h=AT2REzHobjfXZqx2YgOblNgBCnyVArL_vEtdQ67f92dvEgkC2O37Iz8HrAXDB7xlq33-5yEkhvNTKWc7_aZBPJ0AjEWQWnKdG5IIbDpDLeBtwoq4XCKudzRq64BQgl9y-JosJg"
   };
+  String? platform, myUrl;
+
   
-  void changeMyState(){
+  void changeMyState(String platform,String myUrl){
+    this.platform = platform;
+    this.myUrl = myUrl;
     setState(() {
       
     });
