@@ -22,14 +22,12 @@ class SocialMediaIcon extends StatelessWidget {
             radius: 40,
           ),
           onDoubleTap: () {
-            value.myPlatform = "assets/$path";
-            value.myUrl = uri;
-            value.notifyListeners();
+            value.setMyPlatform( "assets/$path");
+            value.setMyUrl(uri);
           },
           onTap: () {
-            value.myPlatform = "assets/$path";
-            value.myUrl = uri;
-            value.notifyListeners(); 
+           value.setMyPlatform( "assets/$path");
+            value.setMyUrl(uri);
             //flutter pub add url_launcher
             launchUrl(Uri.parse(uri));
           },

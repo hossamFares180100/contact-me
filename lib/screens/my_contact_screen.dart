@@ -1,6 +1,7 @@
 import 'package:contact_me/my_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/social_media_icon.dart';
@@ -39,11 +40,12 @@ class _MyContactsState extends State<MyContacts> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         actions: [
-          Consumer<MyProvider>(
+          Selector<MyProvider,Tuple2>(
+            selector: (context, value) => Tuple2(value.getMyPlatform(), value.getMyUrl()),
             builder: (context, value, child) => Padding(
               padding: const EdgeInsets.only(right: 8.0),
               child: IconButton(
-                icon: value.myPlatform == null
+                icon: value.item1 == null
                     ? const Icon(Icons.phone, size: 25)
                     : Material(
                       borderRadius: BorderRadius.circular(50),
@@ -51,15 +53,15 @@ class _MyContactsState extends State<MyContacts> {
                       elevation: 4,
                         color: Colors.transparent,
                         child: Image(
-                          image: AssetImage(value.myPlatform!),
+                          image: AssetImage(value.item1),
                           fit: BoxFit.cover,
                         )),
                 onPressed: () {
                   //flutter pub add url_launcher
-                  if (value.myUrl == null) {
+                  if (value.item2 == null) {
                     launchUrl(Uri.parse("tel:+201114652236"));
                   } else {
-                    launchUrl(Uri.parse(value.myUrl!));
+                    launchUrl(Uri.parse(value.item2));
                   }
                 },
               ),
